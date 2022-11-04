@@ -14,5 +14,12 @@ def get_name():
     response = make_response({"saved_name":saved_name})
     return response
 
+@app.route("/set_name",methods=["POST"])
+def set_name():
+    data = request.json
+    response = make_response({"message":"Name has been set"})
+    response.set_cookie("name",data["name"])
+    return response
+
 if __name__ == "__main__":
     app.run("0.0.0.0")
