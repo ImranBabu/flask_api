@@ -1,4 +1,4 @@
-from flask import Flask,make_response
+from flask import Flask,make_response,request
 
 app = Flask(__name__)
 
@@ -8,7 +8,7 @@ def home():
     response.set_cookie("name","Imran")
     return response
 
-@app.route("/get_name",method=["GET"])
+@app.route("/get_name",methods=["GET"])
 def get_name():
     saved_name = request.cookies.get('name')
     response = make_response({"saved_name":saved_name})
